@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.\.card-container {
+    --gap: 2em;
+    --line-thickness: 2px;
+    --line-color: red;
+    --line-offset: calc(var(--gap) / 2);
+    max-width: 60%;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-auto-rows: minmax(min-content, 1fr);
+    align-items: stretch;
+    gap: var(--gap);
+    overflow: hidden;
+}
+.main-card {
+    position: relative;
+    padding: 1.5em;
+}
+
+.main-card::before,
+.main-card::after {
+    content: "";
+    position: absolute;
+    background: var(--line-color);
+}
+
+/* Row */
+
+.main-card::after {
+    width: 100vw;
+    height: var(--line-thickness);
+    top: calc(var(--line-offset) * -1);
+    left: 0;
+}
+
+/* Column */
+
+.main-card::before {
+    width: var(--line-thickness);
+    height: 100vh;
+    top: 0;
+    left: calc(var(--line-offset) * -1);
+}
